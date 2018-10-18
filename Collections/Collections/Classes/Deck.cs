@@ -7,8 +7,8 @@ namespace Collections.Classes
 {
     public class Deck<T> : IEnumerable
     {
-        T[] cards = new T[5];
-        int count = 0;
+        T[] Cards = new T[5];
+        public int Count = 0;
 
         /// <summary>
         /// Adds card to Deck
@@ -16,11 +16,11 @@ namespace Collections.Classes
         /// <param name="card">Card object</param>
         public void Add(T card)
         {
-            if (count == cards.Length)
+            if (Count == Cards.Length)
             {
-                Array.Resize(ref cards, cards.Length * 2);
+                Array.Resize(ref Cards, Cards.Length * 2);
             }
-            cards[count++] = card;
+            Cards[Count++] = card;
         }
 
         /// <summary>
@@ -28,32 +28,51 @@ namespace Collections.Classes
         /// </summary>
         /// <param name="suit">Name of suit (Spades, Hearts, Diamonds, Clovers)</param>
         /// <returns>Array of cards of same suit</returns>
-        public Card[] ReturnSuit(Suit suit)
+        public T[] ReturnSuit(Suit suit)
         {
-            Card[] cardsOfSameSuit = new Card[cards.Length];
+            T[] cardsOfSameSuit = new T[Count];
             int sizeOfList = 0;
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < Count; i++)
             {
-                Card cardOfSuit = (Card)Convert.ChangeType(cards[i], typeof(Card));
+                Card cardOfSuit = (Card)Convert.ChangeType(Cards[i], typeof(Card));
 
                 if(cardOfSuit.Suit == suit)
                 {
-                    cardsOfSameSuit[i] = cardOfSuit;
-                    sizeOfList++;
+                    cardsOfSameSuit[sizeOfList++] = (T)(object)cardOfSuit;
                 }
             }
-            Array.Resize(ref cardsOfSameSuit, sizeOfList - 1);
+            Array.Resize(ref cardsOfSameSuit, sizeOfList);
 
             return cardsOfSameSuit;
+        }
+
+        /// <summary>
+        /// Removes specific card from deck
+        /// </summary>
+        /// <param name="card">Card object</param>
+        /// <returns>True if something is removed, false if not</returns>
+        public bool Remove(T card)
+        {
+            Card toBeRemoved = (Card)(object)card;
+            for (int i = 0; i < Count; i++)
+            {
+                if ((Card)Convert.ChangeType(Cards[i], typeof(Card)) == toBeRemoved)
+                {
+                    Cards[i] = Cards[--Count];
+                    
+                    return true;
+                }
+            }
+            return false;
         }
 
 
         //magic don't touch
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < Count; i++)
             {
-                yield return cards[i];
+                yield return Cards[i];
             }
         }
 

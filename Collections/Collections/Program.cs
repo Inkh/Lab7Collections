@@ -4,15 +4,15 @@ using Collections.Classes;
 
 namespace Collections
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Test();
+            Deck();
         }
 
-        static void Test()
+        static void Deck()
         {
             Card aceOfSpades = new Card(Suit.Spades, Value.Ace);
             Card twoOfDiamonds = new Card(Suit.Diamonds, Value.Two);
@@ -52,12 +52,24 @@ namespace Collections
 
             foreach (Card card in cardsOfSuit)
             {
-                //Console.WriteLine($"{card.Value} of {card.Suit}");
-                Console.WriteLine(card.Value);
+                Console.WriteLine($"{card.Value} of {card.Suit}");
             }
-            //Console.WriteLine($"{aceOfSpades.Value} of {aceOfSpades.Suit}");
-            
-            
+            Console.WriteLine("======================");
+
+            foreach (Card card in myDeck)
+            {
+                Console.WriteLine($"{card.Value} of {card.Suit}");
+            }
+
+            myDeck.Remove(aceOfSpades);
+
+            Console.WriteLine("======================");
+
+            foreach (Card card in myDeck)
+            {
+                Console.WriteLine($"{card.Value} of {card.Suit}");
+            }
+
         }
     }
 }
