@@ -12,6 +12,9 @@ namespace Collections
             Deck();
         }
 
+        /// <summary>
+        /// Tests in console of Add, Remove, ReturnSuits method
+        /// </summary>
         static void Deck()
         {
             Card aceOfSpades = new Card(Suit.Spades, Value.Ace);

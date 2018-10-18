@@ -8,6 +8,10 @@ namespace CollectionsTest
 {
     public class UnitTest1
     {
+
+        /// <summary>
+        /// Tests if card will be deleted.
+        /// </summary>
         [Fact]
         public void WillDeleteCardTest()
         {
@@ -19,6 +23,9 @@ namespace CollectionsTest
             Assert.True(myDeck.Remove(new Card(Suit.Spades, Value.Ace)));
         }
 
+        /// <summary>
+        /// Tests if card will be added.
+        /// </summary>
         [Fact]
         public void WillAddCardTest()
         {
@@ -31,6 +38,9 @@ namespace CollectionsTest
             Assert.True(myDeck.Count == 2);
         }
 
+        /// <summary>
+        /// Tests if cards of same suit will be returned as an array
+        /// </summary>
         [Fact]
         public void WillReturnCardsOfSameSuitTest()
         {
