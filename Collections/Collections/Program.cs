@@ -48,23 +48,30 @@ namespace Collections
                 myDeck.Add(card);
             }
 
-            Card[] cardsOfSuit = myDeck.ReturnSuit(Suit.Hearts);
 
+            Console.WriteLine("Showing Current Deck");
+            foreach (Card card in myDeck)
+            {
+                Console.WriteLine($"{card.Value} of {card.Suit}");
+            }
+
+            Console.WriteLine("======================");
+
+            Console.WriteLine("Showing cards with Hearts suit");
+            Card[] cardsOfSuit = myDeck.ReturnSuit(Suit.Hearts);
             foreach (Card card in cardsOfSuit)
             {
                 Console.WriteLine($"{card.Value} of {card.Suit}");
             }
             Console.WriteLine("======================");
 
-            foreach (Card card in myDeck)
-            {
-                Console.WriteLine($"{card.Value} of {card.Suit}");
-            }
 
+            Console.WriteLine("Removing Ace of Spades, Two of Diamonds, and Ten of Hearts");
             myDeck.Remove(aceOfSpades);
             myDeck.Remove(twoOfDiamonds);
             myDeck.Remove(new Card(Suit.Hearts, Value.Ten));
 
+            Console.WriteLine("Updated Deck");
             Console.WriteLine("======================");
 
             foreach (Card card in myDeck)
