@@ -56,7 +56,8 @@ namespace Collections.Classes
             Card toBeRemoved = (Card)(object)card;
             for (int i = 0; i < Count; i++)
             {
-                if ((Card)Convert.ChangeType(Cards[i], typeof(Card)) == toBeRemoved)
+                Card cardInDeck = (Card)Convert.ChangeType(Cards[i], typeof(Card));
+                if (cardInDeck.Value == toBeRemoved.Value && cardInDeck.Suit == toBeRemoved.Suit)
                 {
                     Cards[i] = Cards[--Count];
                     

@@ -62,6 +62,8 @@ namespace Collections
             }
 
             myDeck.Remove(aceOfSpades);
+            myDeck.Remove(twoOfDiamonds);
+            myDeck.Remove(new Card(Suit.Hearts, Value.Ten));
 
             Console.WriteLine("======================");
 
